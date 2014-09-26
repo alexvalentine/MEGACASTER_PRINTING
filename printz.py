@@ -43,6 +43,240 @@ pad_positions=((0.1,0.38+0.28*0),(.1,0.38+0.28*1),(.1,0.38+0.28*2),(.1,0.38+0.28
 #coordinates of the center of all contact pads, starting in LL corner and going clockwise
 #24 pads, 6 on each side
 
+pyramid_positions=((0,0),(0,19.4-6),(0,38.8-12),(-19.4+6,19.4-6),(19.4-6,19.4-6))
+
+#coordinates of the center of all contact pads, starting in LL corner and going clockwise
+#24 pads, 6 on each side
+
+def pyramids():
+
+    for i in np.arange(10):
+        if i%2==0:
+            start1='LL'
+            num=-1            
+        else:
+            start1='UR'
+            num=1
+        g.meander(4.4-(i*0.2),4.4-(i*0.2),0.1,start=start1)
+        g.move(x=0.1*num,y=0.1*num,z=0.1)
+
+    g.move(x=-3.6,y=3.4,z=2)
+    g.abs_move(x=pyramid_positions[1][0],y=pyramid_positions[1][1])
+    g.move(z=-3)
+    
+    for i in np.arange(10):
+        if i%2==0:
+            start1='LL'
+            num=-1            
+        else:
+            start1='UR'
+            num=1
+        g.meander(4.4-(i*0.2),4.4-(i*0.2),0.1,start=start1)
+        g.move(x=0.1*num,y=0.1*num,z=0.1)
+    
+    g.move(x=-3.6,y=3.4,z=2)
+    g.abs_move(x=pyramid_positions[2][0],y=pyramid_positions[2][1])
+    g.move(z=-3)
+    
+    for i in np.arange(10):
+        if i%2==0:
+            start1='LL'
+            num=-1            
+        else:
+            start1='UR'
+            num=1
+        g.meander(4.4-(i*0.2),4.4-(i*0.2),0.1,start=start1)
+        g.move(x=0.1*num,y=0.1*num,z=0.1)
+    
+    g.move(x=-3.6,y=3.4,z=2)
+    g.abs_move(x=pyramid_positions[3][0],y=pyramid_positions[3][1])
+    g.move(z=-3)
+
+    for i in np.arange(10):
+        if i%2==0:
+            start1='LL'
+            num=-1            
+        else:
+            start1='UR'
+            num=1
+        g.meander(4.4-(i*0.2),4.4-(i*0.2),0.1,start=start1)
+        g.move(x=0.1*num,y=0.1*num,z=0.1)
+
+    g.move(x=-3.6,y=3.4,z=2)
+    g.abs_move(x=pyramid_positions[4][0],y=pyramid_positions[4][1])
+    g.move(z=-3)
+
+    for i in np.arange(10):
+        if i%2==0:
+            start1='LL'
+            num=-1            
+        else:
+            start1='UR'
+            num=1
+        g.meander(4.4-(i*0.2),4.4-(i*0.2),0.1,start=start1)
+        g.move(x=0.1*num,y=0.1*num,z=0.1)
+
+    g.move(x=-3.6,y=3.4,z=2)
+
+def serp_wires_pyramids():
+    g.abs_move(x=1.55,y=3.2)
+    g.move(z=-2.05)
+    g.move(y=0.3)
+    g.move(y=0.95,z=-0.95)
+    
+    g.move(y=0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0,y=0.4,radius=-0.3,direction=dir)
+    g.move(y=0.45)
+    g.move(y=0.95,z=0.95)
+    g.move(y=0.3)
+    g.move(z=2.05)
+   
+    g.move(x=1.3)
+    g.move(z=-2.05)
+    g.move(y=-0.3)
+    g.move(y=-0.95,z=-0.95)
+    
+    g.move(y=-0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0,y=-0.4,radius=-0.3,direction=dir)
+    g.move(y=-0.45)
+    g.move(y=-0.95,z=0.95)
+    g.move(y=-0.3)
+    g.move(z=2.05)
+
+    g.abs_move(x=pyramid_positions[3][0],y=pyramid_positions[3][1])
+    g.move(x=3.2,y=1.55)
+    g.move(z=-2.05)
+
+    g.move(x=0.3)
+    g.move(x=0.95,z=-0.95)
+
+    g.move(x=0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0.4,y=0,radius=-0.3,direction=dir)
+    g.move(x=0.45)
+    g.move(x=0.95,z=0.95)
+    g.move(x=0.3)
+    g.move(z=2.05)
+   
+    g.move(y=1.3)
+    g.move(z=-2.05)
+    g.move(x=-0.3)
+    g.move(x=-0.95,z=-0.95)
+    
+    g.move(x=-0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=-0.4,y=0,radius=-0.3,direction=dir)
+    g.move(x=-0.45)
+    g.move(x=-0.95,z=0.95)
+    g.move(x=-0.3)
+    g.move(z=2.05)
+
+    g.abs_move(x=pyramid_positions[1][0],y=pyramid_positions[1][1])
+    g.move(x=1.55,y=3.2)
+    g.move(z=-2.05)
+    g.move(y=0.3)
+    g.move(y=0.95,z=-0.95)
+    
+    g.move(y=0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0,y=0.4,radius=-0.3,direction=dir)
+    g.move(y=0.45)
+    g.move(y=0.95,z=0.95)
+    g.move(y=0.3)
+    g.move(z=2.05)
+   
+    g.move(x=1.3)
+    g.move(z=-2.05)
+    g.move(y=-0.3)
+    g.move(y=-0.95,z=-0.95)
+    
+    g.move(y=-0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0,y=-0.4,radius=-0.3,direction=dir)
+    g.move(y=-0.45)
+    g.move(y=-0.95,z=0.95)
+    g.move(y=-0.3)
+    g.move(z=2.05)
+
+
+    g.abs_move(x=pyramid_positions[1][0],y=pyramid_positions[1][1])
+    g.move(x=3.2,y=1.55)
+    g.move(z=-2.05)
+
+    g.move(x=0.3)
+    g.move(x=0.95,z=-0.95)
+
+    g.move(x=0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=0.4,y=0,radius=-0.3,direction=dir)
+    g.move(x=0.45)
+    g.move(x=0.95,z=0.95)
+    g.move(x=0.3)
+    g.move(z=2.05)
+   
+    g.move(y=1.3)
+    g.move(z=-2.05)
+    g.move(x=-0.3)
+    g.move(x=-0.95,z=-0.95)
+    
+    g.move(x=-0.45)
+    
+    for i in np.arange(20):
+        if i%2==0:
+            dir='CW'
+        else:
+            dir='CCW'
+        g.arc(x=-0.4,y=0,radius=-0.3,direction=dir)
+    g.move(x=-0.45)
+    g.move(x=-0.95,z=0.95)
+    g.move(x=-0.3)
+    g.move(z=2.05)
+
+
+
+    g.move(x=20,y=20)
+
+
+    
+
+
 
 def first_print():
 
@@ -479,7 +713,10 @@ def print_die_wiring():
                     else:
                         g.move(x=3,y=(j+1)-3)
     g.move(z=0.5)    
-    
+
+   
+      
+ 
 ##third line of notches
 #g.move(0.1,0.1,0.1)
 #g.move(1)
@@ -537,9 +774,10 @@ def print_die_wiring():
 #MGH_print()
 #g.toggle_pressure(pressure_box)
 
-print_die()
-print_die_wiring()
-#g.view()
+#print_die()
+#print_die_wiring()
+serp_wires_pyramids()
+g.view()
 
 g.view(backend='matplotlib')
 

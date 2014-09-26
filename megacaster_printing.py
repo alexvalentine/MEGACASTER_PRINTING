@@ -97,7 +97,7 @@ def print_die(speed,dwell):
    # g.move(z=0.5)
 
 def print_die_wiring(speed,dwell):
-    g.set_pressure(pressure_box, pdms_pressure)   
+    #g.set_pressure(pressure_box, pdms_pressure)   
     g.feed(5)
     for i in np.arange(2):        
         for j in np.arange(6):
@@ -105,34 +105,34 @@ def print_die_wiring(speed,dwell):
                     g.abs_move(x=pad_positions[23-j][0],y=pad_positions[23-j][1])
                     g.move(z=-2)
                     g.feed(speed)
-                    g.toggle_pressure(pressure_box)
+                    #g.toggle_pressure(pressure_box)
                     g.dwell(dwell)
                     g.move(y=-3)
                     if j<3:
                         g.move(x=-3/(j+1),y=-3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                     else:
                         g.move(x=(j+1)-3,y=-3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                 else:
                     g.abs_move(x=pad_positions[6+j][0],y=pad_positions[6+j][1])
                     g.move(z=-2)
                     g.feed(speed)
-                    g.toggle_pressure(pressure_box)
+                    #g.toggle_pressure(pressure_box)
                     g.dwell(dwell)
                     g.move(y=3)
                     if j<3:
                         g.move(x=-3/(j+1),y=3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                     else:
                         g.move(x=(j+1)-3,y=3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                         
@@ -142,39 +142,39 @@ def print_die_wiring(speed,dwell):
                     g.abs_move(x=pad_positions[j][0],y=pad_positions[j][1])
                     g.move(z=-2)
                     g.feed(speed)
-                    g.toggle_pressure(pressure_box)
+                    #g.toggle_pressure(pressure_box)
                     g.dwell(dwell)                    
                     g.move(x=-3)
                     if j<3:
                         g.move(x=-3,y=-3/(j+1))
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                     else:
                         g.move(x=-3,y=(j+1)-3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                 else:
                     g.abs_move(x=pad_positions[17-j][0],y=pad_positions[17-j][1])
                     g.move(z=-2)
                     g.feed(speed)
-                    g.toggle_pressure(pressure_box)
+                    #g.toggle_pressure(pressure_box)
                     g.dwell(dwell) 
                     g.move(x=3)
                     if j<3:
                         g.move(x=3,y=-3/(j+1))
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
                     else:
                         g.move(x=3,y=(j+1)-3)
-                        g.toggle_pressure(pressure_box)
+                        #g.toggle_pressure(pressure_box)
                         g.feed(10)
                         g.clip(height=2, direction='-x')
 
 
-print_die(speed=1.4,dwell=0.1)
+#print_die(speed=1.4,dwell=0.1)
 print_die_wiring(speed=0.25,dwell=0.1)
 
 g.view(backend='matplotlib')
