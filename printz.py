@@ -1,12 +1,14 @@
 from mecode import G
 import numpy as np
 
-outfile = r"/Volumes/jlewis/User Files/Valentine/AFRL/my_print.pgm"
+outfile = r"C:\Users\Wyss User\Downloads\myprint.pgm" ## RUN ON DESKTOP (WINDOWS)
+
+#outfile = r"/Volumes/jlewis/User Files/Valentine/AFRL/my_print.pgm"   ## RUN ON LAPTOP! (MAC)
 
 
 g=G(
     direct_write=False,
-    #outfile=outfile,
+    outfile=outfile,
     #header=r"/Users/alex/alexvalentine/AFRL-printing/mymegacasterheader.txt",
     #footer=r"/Users/alex/alexvalentine/AFRL-printing/mymegacasterfooter.txt",
     print_lines=True,
@@ -277,205 +279,39 @@ def serp_wires_pyramids():
     
 
 
-
-def first_print():
-
-    #11 layers - 1 base + 10 notched
-    #g.move(5)
-    
-    
-    g.feed(3)
-    
-    #base layer (1)
-    g.meander(4.4,4.4,0.1)
-    
-    #next layer (2)
-    g.move(-0.1,-0.1,0.08)
-    
-    #second layer fill (2)
-    g.meander(4.2,4.1,0.1,start="UR")
-    
-    
-    #first line of notches (2)
-    g.move(y=-0.1)
-    g.move(-1.4)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.0)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.4)
-    
-    #next layer (3)
-    g.move(0.1,0.1,0.08)
-    
-    #second line of notches (3)
-    g.move(1.3)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.0)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.3)
-    g.move(y=0.1)
-    
-    #third layer fill (3)
-    g.meander(4,3.9,0.1,start="LR")
-    
-    #next layer (4)
-    g.move(-0.1,-0.1,0.08)
-    
-    #fourth layer fill (4)
-    g.meander(3.8,3.7,0.1,start="UR")
-    
-    #third line notches (4)
-    g.move(y=-0.1)
-    g.move(-1.2)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.0)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.2)
-    
-    #next layer (5)
-    g.move(0.1,0.1,0.08)
-    
-    #fourth line notches (5)
-    
-    g.move(1.1)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.0)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.1)
-    g.move(y=0.1)
-    
-    #fifth layer fill (5)
-    g.meander(3.6,3.5,0.1,start="LR")
-    
-    #next layer (6)
-    g.move(-0.1,-0.1,0.08)
-    
-    #sixth layer fill (6)
-    g.meander(3.4,3.3,0.1,start="UR")
-    
-    #fifth line notches (6)
-    g.move(y=-0.1)
-    g.move(-1)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.0)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1)
-    
-    #next layer (7)
-    g.move(0.1,0.1,0.08)
-    
-    #sixth line notches (7)
-    g.move(0.9)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.0)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(0.9)
-    g.move(y=0.1)
-    
-    #seventh layer fill
-    g.meander(3.2,3.1,0.1,start="LR")
-    
-    #next layer (8)
-    g.move(-0.1,-0.1,0.08)
-    
-    #eigth layer fill
-    g.meander(3,2.9,0.1,start="UR")
-    
-    #seventh line notches
-    g.move(y=-0.1)
-    g.move(-0.8)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.0)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-0.8)
-    
-    #next line (9)
-    g.move(0.1,0.1,0.08)
-    
-    #eigth line notches (9)
-    g.move(0.7)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.0)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(0.7)
-    g.move(y=0.1)
-    
-    #ninth layer fill (9)
-    g.meander(2.8,2.7,0.1,start="LR")
-    
-    #next line (10)
-    g.move(-0.1,-0.1,0.08)
-    
-    #tenth layer fill (10)
-    g.meander(2.6,2.5,0.1,start="UR")
-    
-    #ninth line notches (10)
-    g.move(y=-0.1)
-    g.move(-0.6)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-1.0)
-    g.move(y=0.1)
-    g.move(-0.2)
-    g.move(y=-0.1)
-    g.move(-0.6)
-    
-    #next line (11)
-    g.move(0.1,0.1,0.08)
-    
-    #tenth line notches(11)
-    g.move(0.5)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(1.0)
-    g.move(y=0.1)
-    g.move(0.2)
-    g.move(y=-0.1)
-    g.move(0.5)
-    g.move(y=0.1)
-    
-    #eleventh layer fill
-    g.meander(2.4,2.3,0.1,start="LR")
-
-    #g.move(3,3,3)
-
-   
+def serpentine_encaps_pdms():
+    g.abs_move(x=5,y=5)
+    g.meander(x=12,y=10,spacing=0.3,start='LL')
+    g.move(x=-6)
+    g.move(y=2)
+    for i in np.arange(10):
+        if i%2==0:
+            direc='CW'
+        else:
+            direc='CCW'
+        g.arc(x=0,y=2.5,radius=-1.7,direction=direc)
+    g.move(y=2)
+    g.move(x=6)
+    g.meander(x=12,y=10,spacing=0.3,start='LR')
+ 
       
+def serpentine_encaps_wire():    
+    g.abs_move(x=10,y=10)
+    g.meander(x=2,y=2,spacing=0.08,start='LL')
+    g.move(x=1)
+    g.move(y=5)
+    for i in np.arange(10):
+        if i%2==0:
+            direc='CW'
+        else:
+            direc='CCW'
+        g.arc(x=0,y=2.5,radius=-1.7,direction=direc)
+    g.move(y=5)
+    g.move(x=-1)
+    g.meander(x=2,y=2,spacing=0.08,start='LL')
+    
          
+                           
 def MGH_print():
     #----print 4 electrodes 
     #g.set_home(x=0,y=0)
@@ -776,8 +612,10 @@ def print_die_wiring():
 
 #print_die()
 #print_die_wiring()
-serp_wires_pyramids()
-g.view()
+#pyramids()
+#serp_wires_pyramids()
+serpentine_encaps_pdms()
+serpentine_encaps_wire()
 
 g.view(backend='matplotlib')
 
