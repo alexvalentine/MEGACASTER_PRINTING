@@ -18,6 +18,10 @@ pad_positions=((0.1,0.38+0.28*0),(.1,0.38+0.28*1),(.1,0.38+0.28*2),(.1,0.38+0.28
 (2.06,0.38+0.28*5),(2.06,0.38+0.28*4),(2.06,0.38+0.28*3),(2.06,0.38+0.28*2),(2.06,0.38+0.28*1),(2.06,0.38+0.28*0),
 (0.38+0.28*5,0.1),(0.38+0.28*4,0.1),(0.38+0.28*3,0.1),(0.38+0.28*2,0.1),(0.38+0.28*1,0.1),(0.38+0.28*0,0.1))
 
+well_position = ((10.5, 25.245), (24, 25.245), (37.5, 25.245), (51, 25.245), 
+                       (10.5, 24.245), (24, 24.245), (37.5, 24.245), (51, 24.245))
+
+
 pressure_box = 16
 pdms_pressure = 13
 
@@ -462,10 +466,77 @@ def LED_line(speed,dwell,pressure,height):
     g.feed(10)
     g.clip(height=2, direction='+x')
 
+def stacked_rectangle(x, y, layer_height, layers, nozzle = 'Z'):
+    
+    for i in range(layers):
+        g.move(x=x)
+        g.move(y=-y)
+        g.move(x=-x)
+        g.move(y=y)
+        g.move(**{nozzle:layer_height})
+
+def print_single_well(x, y, layer_height, layers, speed, pressure, filament = 1, nozzle = 'Z'):
+    g.feed(speed)
+    g.set_pressure(pressure_box, pressure)   
+    g.toggle_pressure(pressure_box)
+    g.dwell(0.25)
+    stacked_rectangle(x=x, y=y, layer_height = layer_height, layers = layers, nozzle = nozzle)
+    g.toggle_pressure(pressure_box)
+
+def print_all_single_wells(layer_height, layer_increments, total_increments, pressure, speed, nozzle):
+    #
+    for i in range(0,2):      
+        g.feed(15)
+        g.abs_move(*well_position[i])
+        g.abs_move(**{nozzle:0.05})
+        print_single_well(x = 12.5, y = -14, layer_height = layer_height ,  layers = layer_increments, speed = speed, pressure = pressure, filament = 1, nozzle = nozzle)
+        g.clip(axis=nozzle, direction='+y', height=3)
+    
+    #for i in range(4,8):      
+    #    g.feed(15)
+    #    g.abs_move(*well_position[i])
+    #    g.abs_move(**{nozzle:0.05})
+    #    print_single_well(x = 12.5, y = 14, layer_height = layer_height ,  layers = layer_increments, speed = speed, pressure = pressure, filament = 1, nozzle = nozzle)
+    #    g.clip(axis=nozzle, direction='-y', height=3)
+     
+    count = 0
+    repeats = (total_increments)-1     
+    
+    
+    for i in range(repeats-1):
+        
+        count = count + layer_increments
+        for i in range(0,2):
+           
+            g.feed(15)
+            g.abs_move(*well_position[i])
+            g.abs_move(**{nozzle:(15*count*layer_height)/(repeats)})
+            print_single_well(x = 12.5, y = -14, layer_height = layer_height ,  layers = layer_increments, speed = speed, pressure = pressure, filament = 1, nozzle = nozzle)
+            g.clip(axis=nozzle, direction='+y', height=3)
+
+        print count 
+        print count*layer_height
+        print (15*count*layer_height)/(repeats)
+       
+        #for i in range(4,8):      
+        #    g.feed(15)
+        #    g.abs_move(*well_position[i])
+        #    g.abs_move(**{nozzle:count*layer_height})
+        #    print_single_well(x = 12.5, y = 14, layer_height = layer_height ,  layers = layer_increments, speed = speed, pressure = pressure, filament = 1, nozzle = nozzle)
+        #    g.clip(axis=nozzle, direction='-y', height=3)
+
+
+
+
+
 #print_die(speed=1.4,dwell=0.1)
 #print_die_wiring(speed=0.25,dwell=0.1)
-LED_Harvard(speed=2,dwell=0.1,pressure=36,height=0.06)
+#LED_Harvard(speed=2,dwell=0.1,pressure=36,height=0.06)
 #LED_line(speed=4,dwell=1.5,pressure=15,height=0.04)
+
+g.set_home(x=0,y=0,z=0)
+print_all_single_wells(layer_height = 0.04, layer_increments=5, total_increments=20, pressure=32, speed=5, nozzle = 'Z')
+
 
 #g.view(backend='matplotlib')
 
