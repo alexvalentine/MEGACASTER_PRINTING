@@ -11,7 +11,7 @@ g=G(
     footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt',
     print_lines=False,
     aerotech_include=False,
-)
+) 
 
 pad_positions=((0.1,0.38+0.28*0),(.1,0.38+0.28*1),(.1,0.38+0.28*2),(.1,0.38+0.28*3),(.1,0.38+0.28*4),(.1,0.38+0.28*5),
 (0.38+0.28*0,2.06),(0.38+0.28*1,2.06),(0.38+0.28*2,2.06),(0.38+0.28*3,2.06),(0.38+0.28*4,2.06),(0.38+0.28*5,2.06),
