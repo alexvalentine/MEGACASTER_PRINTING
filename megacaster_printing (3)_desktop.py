@@ -6,9 +6,9 @@ outfile = r"/Volumes/group0/jlewis/User Files/Valentine/AFRL/my_print.pgm"
 #myz = 2.82357
 g=G(
     direct_write=False,
-    outfile=r'C:\Users\Aerosol Jet\Documents\myprint.pgm',
-    header=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterheader.txt',
-    footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterfooter.txt',
+    outfile=r'C:\Users\Wyss User\Documents\myprint.pgm',
+    header=r'C:\Users\Wyss User\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterheader.txt',
+    footer=r'C:\Users\Wyss User\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt',
     print_lines=False,
     aerotech_include=False,
 ) 
@@ -715,310 +715,813 @@ def LED_AFRL(speed,dwell,pressure,height):
     g.feed(10)
     zero=0.0
     g.abs_move(z=zero)
-    g.set_home(x=0,y=0,z=0)
+    g.set_home(z=0)
     g.move(z=2)
-    g.abs_move(x=2,y=2)
-    g.abs_move(z=height)
-    g.toggle_pressure(pressure_box)
-    g.feed(speed)
-    g.dwell(dwell)
     
-    #####A
+    
+    #########################    A    #########################    
 
-    #first wire
-    g.move(y=33)
-    g.move(x=5)
-    g.move(y=-2.6)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-0.6)
-    g.move(x=0.9)
-    g.move(y=8.5)
-    g.move(x=8.5)
-    g.move(y=-10.)
-    g.move(x=7)
-    g.move(y=-5.8)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
-    g.abs_move(y=2)
-    g.toggle_pressure(pressure_box)
-    g.feed(10)
-    g.clip(height=2, direction='+x')
-    #
-    ##second wire
-    g.abs_move(x=2,y=2)
+    #FIRST WIRE
+
+    g.abs_move(x=3,y=38.1)
     g.abs_move(z=height)
-    g.feed(speed)
     g.toggle_pressure(pressure_box)
+    g.feed(speed)
     g.dwell(dwell)
+
+
+    g.move(x=1,y=1)
+    g.move(x=0.592,y=2.39)  #2.5
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=1.2,y=4.87)  #5.1
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=1.2,y=4.87)  #5.1
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=0.472,y=1.91)  #2.0
+    g.move(x=1)
+    g.move(y=-2.6)
+    g.move(x=1.5)
+
+    g.move(x=0.8,z=1)
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1)
+
+    g.move(x=1.5)
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+    
+
+    #SECOND WIRE
+
+    g.move(z=4)
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+
+
+    g.move(x=21.4)
+    g.move(y=1)
+
+
+
+    g.move(x=-0.592,y=2.39)  #2.5
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-1.2,y=4.87)  #5.1
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-1.2,y=4.87)  #5.1
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-0.472,y=1.91)  #2.0
+    g.move(x=-1)
+    g.move(y=-2.6)
+    g.move(x=-1.5)
+
+    g.move(x=-0.8,z=1)
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.8,z=-1)
+
+    g.move(x=-1.5)
+    
+    g.move(y=1.5)
+    g.move(x=3.5)
+    g.move(y=2.85)
+    g.move(x=1.8)
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+
+    #THIRD WIRE
+
+    g.move(z=4)
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+    g.move(y=2.02)
+    g.move(x=4.42,y=17.88)   #20.5
+    g.move(x=0.36,y=1.46)     #1.5
+    g.move(x=1.2)
+    g.move(x=0.38,y=1.55)     #1.6
+
+
+    g.move(x=0.24,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=0.76,z=-1) #0.8
+    
+
+    g.move(x=1.08,y=4.37)    #4.5
+
+
+    g.move(x=0.24,y=0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=0.76,z=-1) #0.8
+    
+    g.arc(x=2.79,y=3.1,radius=3.9,direction='CW')
+    g.arc(x=2.79,y=-3.1,radius=3.9,direction='CW')
+
+    g.move(x=0.24,y=-0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=-0.76,z=-1) #0.8
+
+    g.move(x=1.08,y=-4.37)    #4.5
+    
+    
+    g.move(x=0.24,y=-0.76,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=-0.76,z=-1) #0.8
+
+    g.move(x=0.38,y=-1.55)     #1.6
+
+    g.move(x=6)
+    g.move(y=13.74)
+    g.move(x=20)
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+    
+
+
+    #########################    F    #########################    
+
+    #FIRST WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+
+
+    g.move(x=22.4)
+    g.move(x=3,y=1)
+
+    g.move(y=2)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=3.13)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=3.13)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=3.13)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+    
+    g.move(y=1)
+    g.move(x=-3)
     g.move(y=3)
-    g.move(x=5)
-    g.move(y=6.2)
-    g.dwell(dwell)
-    g.move(y=0.8,z=1)
-    g.move(y=0.8,z=-1)
-    g.move(y=1.2)
-    g.move(x=1.6)
-    g.move(y=8)
-    g.move(x=1.25)
-    g.dwell(dwell)
-    g.move(x=0.8,z=1)
-    g.move(x=0.8,z=-1)
-    g.move(x=1.4)
-    g.dwell(dwell)
-    g.move(x=0.8,z=1)
-    g.move(x=0.8,z=-1)
-    g.move(x=1.25)
-    g.move(y=-8.5)
-    g.move(x=1.4)
-    g.move(y=-0.6)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-0.6)
-    g.move(x=3)
-    g.move(y=-2)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
-    g.abs_move(y=2)
-    g.move(x=3)
     g.toggle_pressure(pressure_box)
-    g.feed(10)
-    g.clip(height=2, direction='+x')
-
-
-    ##third wire
-    g.abs_move(x=2,y=2)
-    g.abs_move(z=height)
-    g.feed(speed)
-    g.toggle_pressure(pressure_box)
-    g.dwell(dwell)
-    g.move(y=33)
-    g.move(x=15.4)
-    g.move(y=-2.6)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-3.2)
-    g.dwell(dwell)
-    g.move(y=-0.8,z=1)
-    g.move(y=-0.8,z=-1)
-    g.move(y=-0.8)
-    g.move(x=9)
-    g.move(y=-7)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
-    g.abs_move(y=2)
-    #g.toggle_pressure(pressure_box)
-    #g.feed(10)
-    #g.clip(height=2, direction='+x')
-
-    #anode/cathode
-    g.feed(speed*0.4)
-    g.move(x=-1.5)  
-    g.arc(x=-2.8,y=0,radius=1.4)
-    g.arc(x=2.8,y=0,radius=1.4)
-    g.move(x=-0.2)
-    g.arc(x=-2.4,y=0,radius=1.2)
-    g.arc(x=2.4,y=0,radius=1.2)
-    g.move(x=-0.2)
-    g.arc(x=-2.0,y=0,radius=1)
-    g.arc(x=2.0,y=0,radius=1)
-    g.move(x=-0.2)
-    g.arc(x=-1.6,y=0,radius=0.8)
-    g.arc(x=1.6,y=0,radius=0.8)
-    g.move(x=-0.2)
-    g.arc(x=-1.2,y=0,radius=0.6)
-    g.arc(x=1.2,y=0,radius=0.6)
-    g.move(x=-0.2)
-    g.arc(x=-0.8,y=0,radius=0.4)
-    g.arc(x=0.8,y=0,radius=0.4)
-    g.move(x=-0.2)
-    g.arc(x=-0.4,y=0,radius=0.2)
-    g.arc(x=0.4,y=0,radius=0.2)
-    g.move(x=-0.2)
-    g.toggle_pressure(pressure_box)
-    g.feed(10)
-    g.clip(height=2, direction='+x')
-
-    g.abs_move(x=2,y=2)
-    g.abs_move(z=height)
-    g.feed(speed*0.4)
-    g.toggle_pressure(pressure_box)
-    g.dwell(dwell)
-    g.move(x=1.4)
-    g.arc(x=-2.8,y=0,radius=1.4)
-    g.arc(x=2.8,y=0,radius=1.4)
-    g.move(x=-0.2)
-    g.arc(x=-2.4,y=0,radius=1.2)
-    g.arc(x=2.4,y=0,radius=1.2)
-    g.move(x=-0.2)
-    g.arc(x=-2.0,y=0,radius=1)
-    g.arc(x=2.0,y=0,radius=1)
-    g.move(x=-0.2)
-    g.arc(x=-1.6,y=0,radius=0.8)
-    g.arc(x=1.6,y=0,radius=0.8)
-    g.move(x=-0.2)
-    g.arc(x=-1.2,y=0,radius=0.6)
-    g.arc(x=1.2,y=0,radius=0.6)
-    g.move(x=-0.2)
-    g.arc(x=-0.8,y=0,radius=0.4)
-    g.arc(x=0.8,y=0,radius=0.4)
-    g.move(x=-0.2)
-    g.arc(x=-0.4,y=0,radius=0.2)
-    g.arc(x=0.4,y=0,radius=0.2)
-    g.move(x=-0.2)
-    g.toggle_pressure(pressure_box)
-    g.feed(10)
-    g.clip(height=2, direction='+x')
-
-
-
-
-
-
-
-
-def print_die_wiring_DIE_CONNECTIONS(nozzle,height,speed,dwell,pressure):
-    g.feed(25)
-    g.set_pressure(pressure_box, pressure)
+    g.move(z=4)
     
-    #####test line
-    g.abs_move(**{nozzle:2})
-    g.abs_move(x=2,y=2)
-    g.abs_move(**{nozzle:height})
-    g.toggle_pressure(pressure_box)
+    
+    
+    #SECOND WIRE
 
-    g.dwell(dwell)
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
     g.feed(speed)
-    g.move(x=7)
-    g.feed(25)
-    g.clip(axis=nozzle, height=5, direction='-x')
-    g.feed(25)
-    g.toggle_pressure(pressure_box)
-    g.dwell(1)
-    #
-    g.write("G82 X Y")
-    g.abs_move(x=-29.072078-0.06,y=-4.006953-.38)
-    g.set_home(x=0,y=0)
-    for i in np.arange(2):        
-        for j in np.arange(6):
-                if i==0:
-                    g.abs_move(**{nozzle:1})
-                    if j<3:
-                        g.abs_move(x=pad_positions[23-j][0]-(4-(j+1)),y=pad_positions[23-j][1]-4)
-                    else:
-                        g.abs_move(x=pad_positions[23-j][0]+((j-2)),y=pad_positions[23-j][1]-4)
-                    
-                    g.abs_move(**{nozzle:height})
-                    g.feed(speed)
-                    g.toggle_pressure(pressure_box)
-                    g.move(x=0.3)
-                    g.arc(x=-0.6,y=0,radius=0.3)
-                    g.arc(x=0.6,y=0,radius=0.3)
-                    g.move(x=-0.3)
-                    g.abs_move(x=pad_positions[23-j][0],y=pad_positions[23-j][1]-2)
-                    g.move(y=1.0)
-                    g.move(y=1.1,**{nozzle:0.13})
-                    g.feed(2)
-                    g.move(y=-0.9,**{nozzle:-0.13})
-                    g.toggle_pressure(pressure_box)
-                else:
-                    print ''
-                    g.abs_move(**{nozzle:1})
-                    if j<3:
-                        g.abs_move(x=pad_positions[6+j][0]-(4-(j+1)),y=pad_positions[6+j][1]+4)
-                    else:
-                        g.abs_move(x=pad_positions[6+j][0]+((j-2)),y=pad_positions[6+j][1]+4)
-                    
-                    g.abs_move(**{nozzle:height})
-                    g.feed(speed)
-                    g.toggle_pressure(pressure_box)
-                    g.move(x=0.3)
-                    g.arc(x=-0.6,y=0,radius=0.3)
-                    g.arc(x=0.6,y=0,radius=0.3)
-                    g.move(x=-0.3)
-                    g.abs_move(x=pad_positions[6+j][0],y=pad_positions[6+j][1]+2)
-                    g.move(y=-1.0)
-                    g.move(y=-1.1,**{nozzle:0.13})
-                    g.feed(2)
-                    g.move(y=1.0,**{nozzle:-0.13})
-                    g.toggle_pressure(pressure_box)
-    #                
-    for i in np.arange(2):        
-        for j in np.arange(6):
-                if i==0:
-                    g.abs_move(**{nozzle:1})
-                    if j<3:
-                        g.abs_move(x=pad_positions[j][0]-4,y=pad_positions[j][1]-(4-(j+1)))
-                    else:
-                        g.abs_move(x=pad_positions[j][0]-4,y=pad_positions[j][1]+((j-2)))
+    g.dwell(dwell)
 
-                    g.abs_move(**{nozzle:height})
-                    g.feed(speed)
-                    g.toggle_pressure(pressure_box)
-                    g.move(x=0.3)
-                    g.arc(x=-0.6,y=0,radius=0.3)
-                    g.arc(x=0.6,y=0,radius=0.3)
-                    g.move(x=-0.3)
-                    g.abs_move(x=pad_positions[j][0]-2,y=pad_positions[j][1])
-                    g.move(x=1.0)
-                    g.move(x=1.1,**{nozzle:0.13})
-                    #g.dwell(2)
-                    g.feed(2)
-                    g.move(x=-1.0,**{nozzle:-0.13})
-                    g.toggle_pressure(pressure_box)
-                else:
-                    print ''
-                    g.abs_move(**{nozzle:1})
-                    if j<3:
-                        g.abs_move(x=pad_positions[17-j][0]+4,y=pad_positions[17-j][1]-(4-(j+1)))
-                    else:
-                        g.abs_move(x=pad_positions[17-j][0]+4,y=pad_positions[17-j][1]+((j-2)))
-                        
-                    g.abs_move(**{nozzle:height})
-                    g.feed(speed)
-                    g.toggle_pressure(pressure_box)
-                    g.move(x=0.3)
-                    g.arc(x=-0.6,y=0,radius=0.3)
-                    g.arc(x=0.6,y=0,radius=0.3)
-                    g.move(x=-0.3)
-                    g.abs_move(x=pad_positions[17-j][0]+2,y=pad_positions[17-j][1])
-                    g.move(x=-1.0)
-                    g.move(x=-1.1,**{nozzle:0.13})
-                    #g.dwell(2)
-                    g.feed(2)
-                    g.move(x=1.0,**{nozzle:-0.13})
-                    g.toggle_pressure(pressure_box)
-        
-        if i==1:
-            g.clip(axis=nozzle, height=5, direction='-x')
-        else:
-            print ''
+
+
+    g.move(x=22.4)
+    g.move(x=3,y=1)
+    g.move(x=1,y=0.33)
+
+    g.move(y=18)
+    g.move(x=9)
+    g.move(y=1)
+    g.move(x=-1)
+    
+    g.move(x=-0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.8,z=-1) #0.8
+
+    g.move(x=-3.13)
+
+    g.move(x=-0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=-0.8,z=-1) #0.8
+    
+    g.move(x=-2.67)
+    g.move(y=1.13)
+
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=3.13)
+
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=0.8)
+    g.move(x=-3)
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+    
+    #THIRD WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+    g.move(x=22.4)
+    g.move(x=3,y=1)
+    g.move(x=1,y=0.33)
+
+    g.move(y=18)
+    g.move(x=9)
+    g.move(y=2)
+    g.move(x=-9)
+    g.move(y=6.2+1.9)
+    g.move(x=-1)
+    g.move(y=1.23)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(x=3.5)
+
+    g.move(x=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1) #0.8
+
+    g.move(x=3.5)
+    
+    g.move(x=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1) #0.8
+
+    g.move(x=3.5)
+
+    g.move(x=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1) #0.8
+
+    g.move(x=1.5)
+    g.move(y=2.85)
+    g.move(x=1.5)
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+
+
+#########################    R    #########################    
+
+    #FIRST WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+    g.move(y=-35.1)
+    g.move(x=18)
+    g.move(x=-18)
+    g.move(y=8.5)    
+    
+    g.move(x=4)
+    g.move(y=1.5)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=5)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=5)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=5)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(x=1)
+    g.move(y=-12.7)
+    g.move(x=4.5)
+    g.move(x=9.5,y=-16)
+
+    g.toggle_pressure(pressure_box)
+    g.move(z=4)
+
+    
+    #SECOND WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.abs_move(z=height)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+    g.move(y=-35.1)
+    g.move(x=18)
+    g.move(x=-18)
+    g.move(y=8.5)
+    
+    g.move(x=2)
+    g.move(y=-6.1)
+    g.move(x=2)    
+    g.move(y=1)
+    
+    g.move(y=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(y=0.8,z=-1) #0.8
+
+    g.move(y=1.5)
+    g.move(x=1)
+    g.move(y=11)
+    g.move(x=2.5)
+    
+    g.move(x=0.8,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1) #0.8
+
+    g.move(x=3.58,y=-6.01)
+
+    g.move(x=0.41,y=-0.69,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.41,y=-0.69,z=-1) #0.8
+
+    g.move(x=3.58,y=-6.01)
+
+    g.move(x=0.41,y=-0.69,z=1) #0.8
+    g.move(x=-0.5,y=-0.5)
+    g.rect(x=1,y=1)
+    g.move(x=0.5,y=0.5)
+    g.move(x=0.41,y=-0.69,z=-1) #0.8
+
+    
+
+#    g.move(y=0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(y=0.8,z=-1) #0.8
+#
+#    g.move(x=4)
+#    
+#    g.move(x=0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=0.8,z=-1) #0.8
+#    
+#    g.move(x=0.5)
+#    g.arc(x=4,y=-1.5,radius=10,direction='CW')
+#    
+#    g.move(x=0.7,y=-0.4,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=0.5,y=-0.4,z=-1) #0.8
+#    
+#    g.arc(x=2.5,y=-4.5,radius=8,direction='CW')
+#
+#    g.move(y=-0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(y=-0.8,z=-1) #0.8
+#
+#    g.arc(x=-0.4,y=-1.8,radius=8,direction='CW')
+#    g.move(x=1)
+#    g.arc(x=-2.,y=-4.1,radius=8,direction='CW')    
+#    
+#    g.move(x=-0.5,y=-0.4,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.7,y=-0.4,z=-1) #0.8
+#
+#    g.arc(x=-4,y=-1.3,radius=10,direction='CW')
+#    g.move(x=-0.5)
+#    
+#    g.move(x=-0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.8,z=-1) #0.8
+#
+#    g.move(x=9.03,y=-11.9)
+#    g.move(x=3)
+
+
+
+#    g.move(x=-0.8,y=-1.1,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-1.1,y=-1.1,z=-1) #0.8
+#    
+#    g.arc(x=-5,y=-2,radius=8,direction='CW')
+
+#    g.move(y=3.13)
+#
+#    g.move(y=0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(y=0.8,z=-1) #0.8
+#    
+#    g.move(y=3.13)
+#    
+#    g.move(y=0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(y=0.8,z=-1) #0.8
+#    
+#    g.move(y=3.13)
+#    
+#    g.move(y=0.8,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(y=0.8,z=-1) #0.8
+    
+    #g.move(y=3.13)
+
+    #g.move(x=2)
+    #g.move(x=1,y=1)
+    #g.move(x=0.592,y=2.39)  #2.5
+
+
+
+
+
+
+
+
+
+
+
+#g.move(x=1.18,y=3.82)    #4
+
+
+    #g.arc(x=6,y=0,radius=3.5,direction='CW')
+    #g.move(x=3)
+
+
+#    g.move(x=2)
+#    g.move(x=21.4)
+#    g.move(y=1)
+#
+#
+#
+#    g.move(x=-0.74,y=2.39)  #2.5
+#
+#    g.move(x=-0.24,y=0.76,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.24,y=0.76,z=-1) #0.8
+#
+#    g.move(x=-1.5,y=4.87)  #5.1
+#
+#    g.move(x=-0.24,y=0.76,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.24,y=0.76,z=-1) #0.8
+#
+#    g.move(x=-1.5,y=4.87)  #5.1
+#
+#    g.move(x=-0.24,y=0.76,z=1) #0.8
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.24,y=0.76,z=-1) #0.8
+#
+#    g.move(x=-0.59,y=1.91)  #2.0
+#    g.move(x=-1)
+#    g.move(y=-2.6)
+#    g.move(x=-0.8)
+#
+#    g.move(x=-0.8,z=1)
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=-0.8,z=-1)
+#
+#    g.move(x=-1)
+
+
+
+
+
+
+
+#    g.move(x=2)
+#
+#    g.move(x=0.8,z=1)
+#    g.move(x=-0.5,y=-0.5)
+#    g.rect(x=1,y=1)
+#    g.move(x=0.5,y=0.5)
+#    g.move(x=0.8,z=-1)
+
+
+    #g.move(x=0.24,y=0.76,z=1)
+    #g.move(x=1)
+    #g.move(x=-1)
+    #g.move(x=0.24,y=0.76,z=-1)
+    #g.move(x=1.5,y=4.87)
+    
+
+
+
+
+#    g.move(y=33)
+#    g.move(x=5)
+#    g.move(y=-2.6)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-0.6)
+#    g.move(x=0.9)
+#    g.move(y=8.5)
+#    g.move(x=8.5)
+#    g.move(y=-10.)
+#    g.move(x=7)
+#    g.move(y=-5.8)
+#    g.dwell(dwell)
+#    g.move(y=-1.3,z=1)
+#    g.move(y=-1.3,z=-1)
+#    g.abs_move(y=2)
+#    g.toggle_pressure(pressure_box)
+#    g.feed(10)
+#    g.clip(height=2, direction='+x')
+#    #
+#    ##second wire
+#    g.abs_move(x=2,y=2)
+#    g.abs_move(z=height)
+#    g.feed(speed)
+#    g.toggle_pressure(pressure_box)
+#    g.dwell(dwell)
+#    g.move(y=3)
+#    g.move(x=5)
+#    g.move(y=6.2)
+#    g.dwell(dwell)
+#    g.move(y=0.8,z=1)
+#    g.move(y=0.8,z=-1)
+#    g.move(y=1.2)
+#    g.move(x=1.6)
+#    g.move(y=8)
+#    g.move(x=1.25)
+#    g.dwell(dwell)
+#    g.move(x=0.8,z=1)
+#    g.move(x=0.8,z=-1)
+#    g.move(x=1.4)
+#    g.dwell(dwell)
+#    g.move(x=0.8,z=1)
+#    g.move(x=0.8,z=-1)
+#    g.move(x=1.25)
+#    g.move(y=-8.5)
+#    g.move(x=1.4)
+#    g.move(y=-0.6)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-0.6)
+#    g.move(x=3)
+#    g.move(y=-2)
+#    g.dwell(dwell)
+#    g.move(y=-1.3,z=1)
+#    g.move(y=-1.3,z=-1)
+#    g.abs_move(y=2)
+#    g.move(x=3)
+#    g.toggle_pressure(pressure_box)
+#    g.feed(10)
+#    g.clip(height=2, direction='+x')
+#
+#
+#    ##third wire
+#    g.abs_move(x=2,y=2)
+#    g.abs_move(z=height)
+#    g.feed(speed)
+#    g.toggle_pressure(pressure_box)
+#    g.dwell(dwell)
+#    g.move(y=33)
+#    g.move(x=15.4)
+#    g.move(y=-2.6)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-3.2)
+#    g.dwell(dwell)
+#    g.move(y=-0.8,z=1)
+#    g.move(y=-0.8,z=-1)
+#    g.move(y=-0.8)
+#    g.move(x=9)
+#    g.move(y=-7)
+#    g.dwell(dwell)
+#    g.move(y=-1.3,z=1)
+#    g.move(y=-1.3,z=-1)
+#    g.abs_move(y=2)
+#    #g.toggle_pressure(pressure_box)
+#    #g.feed(10)
+#    #g.clip(height=2, direction='+x')
+#
+#    #anode/cathode
+#    g.feed(speed*0.4)
+#    g.move(x=-1.5)  
+#    g.arc(x=-2.8,y=0,radius=1.4)
+#    g.arc(x=2.8,y=0,radius=1.4)
+#    g.move(x=-0.2)
+#    g.arc(x=-2.4,y=0,radius=1.2)
+#    g.arc(x=2.4,y=0,radius=1.2)
+#    g.move(x=-0.2)
+#    g.arc(x=-2.0,y=0,radius=1)
+#    g.arc(x=2.0,y=0,radius=1)
+#    g.move(x=-0.2)
+#    g.arc(x=-1.6,y=0,radius=0.8)
+#    g.arc(x=1.6,y=0,radius=0.8)
+#    g.move(x=-0.2)
+#    g.arc(x=-1.2,y=0,radius=0.6)
+#    g.arc(x=1.2,y=0,radius=0.6)
+#    g.move(x=-0.2)
+#    g.arc(x=-0.8,y=0,radius=0.4)
+#    g.arc(x=0.8,y=0,radius=0.4)
+#    g.move(x=-0.2)
+#    g.arc(x=-0.4,y=0,radius=0.2)
+#    g.arc(x=0.4,y=0,radius=0.2)
+#    g.move(x=-0.2)
+#    g.toggle_pressure(pressure_box)
+#    g.feed(10)
+#    g.clip(height=2, direction='+x')
+#
+#    g.abs_move(x=2,y=2)
+#    g.abs_move(z=height)
+#    g.feed(speed*0.4)
+#    g.toggle_pressure(pressure_box)
+#    g.dwell(dwell)
+#    g.move(x=1.4)
+#    g.arc(x=-2.8,y=0,radius=1.4)
+#    g.arc(x=2.8,y=0,radius=1.4)
+#    g.move(x=-0.2)
+#    g.arc(x=-2.4,y=0,radius=1.2)
+#    g.arc(x=2.4,y=0,radius=1.2)
+#    g.move(x=-0.2)
+#    g.arc(x=-2.0,y=0,radius=1)
+#    g.arc(x=2.0,y=0,radius=1)
+#    g.move(x=-0.2)
+#    g.arc(x=-1.6,y=0,radius=0.8)
+#    g.arc(x=1.6,y=0,radius=0.8)
+#    g.move(x=-0.2)
+#    g.arc(x=-1.2,y=0,radius=0.6)
+#    g.arc(x=1.2,y=0,radius=0.6)
+#    g.move(x=-0.2)
+#    g.arc(x=-0.8,y=0,radius=0.4)
+#    g.arc(x=0.8,y=0,radius=0.4)
+#    g.move(x=-0.2)
+#    g.arc(x=-0.4,y=0,radius=0.2)
+#    g.arc(x=0.4,y=0,radius=0.2)
+#    g.move(x=-0.2)
+#    g.toggle_pressure(pressure_box)
+#    g.feed(10)
+#    g.clip(height=2, direction='+x')
+
+
+
+
+
+
+
+
+
 
 #print_die(speed=1.4,dwell=0.1)
 #print_die_wiring(speed=0.25,dwell=0.1)
@@ -1028,15 +1531,28 @@ def print_die_wiring_DIE_CONNECTIONS(nozzle,height,speed,dwell,pressure):
 #g.set_home(x=0,y=0,z=0)
 #print_all_single_wells(layer_height = 0.04, layer_increments=5, total_increments=20, pressure=32, speed=5, nozzle = 'Z')
 
-g.set_home(x=0,y=0,z=0)
+g.set_home(x=0,y=0)
 
 g.rect(x=50.8,y=76.2)
 g.move(x=3,y=3)
 g.rect(x=44.8,y=70.2)
+g.move(x=22.4)
+g.move(y=70.2)
+g.move(x=22.4)
+g.move(y=-35.1)
+g.move(x=-44.8)
+g.move(x=11.2)
+g.move(y=35.1)
+g.move(x=-11.2)
+LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
+
 
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
 
-g.view(backend='matplotlib')
+#g.view(backend='matplotlib')
 
 g.teardown() 
+
+
+
