@@ -28,6 +28,26 @@ well_position = ((10.5, 25.245), (24, 25.245), (37.5, 25.245), (51, 25.245),
                        (10.5, 24.245), (24, 24.245), (37.5, 24.245), (51, 24.245))
 
 
+
+#### ATMEGA328
+    '''  outer pin perimeter: 9mm x 9mm
+        inner packaging perimeter: 7mm x 7mm
+        'pad target' at end of each pin is approx. 0.4mm x 0.4mm
+        pad positions are the CENTER of each of these pad targets
+
+        set bottom left corner of outer border as 0,0, pad position 
+
+        pads numbered using SAME convention as pin numbering - #1 is top left pin on left side, continues counterclockwise around chip
+ 
+    '''
+
+
+ATMEGA328_pad_positions = ((0.2,7.3),(0.2,6.5),(0.2,5.7),(0.2,4.9),(0.2,4.1),(0.2,3.3),(0.2,2.5),(0.2,1.7),
+
+
+
+
+
 pressure_box = 16
 pdms_pressure = 13
 
