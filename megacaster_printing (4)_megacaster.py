@@ -1,7 +1,6 @@
 from mecode import G
 import numpy as np
 
-outfile = r"/Volumes/group0/jlewis/User Files/Valentine/AFRL/my_print.pgm"
 
 #myz = 2.82357
 g=G(
@@ -529,19 +528,17 @@ def LED_Harvard(speed,dwell,pressure,height):
     g.set_pressure(pressure_box, pressure)   
     g.feed(10)
     zero=0.0
-    g.abs_move(z=zero)
     g.set_home(x=0,y=0,z=0)
+    g.abs_move(z=zero)
     g.move(z=2)
-    
-    
-    
-    
-    #first wire
-    g.move(y=33)
+    g.abs_move(x=2,y=2)
     g.abs_move(z=height)
     g.toggle_pressure(pressure_box)
     g.feed(speed)
     g.dwell(dwell)
+    
+    #####first wire
+    g.move(y=33)
     g.move(x=5)
     g.move(y=-2.6)
     g.dwell(dwell)
@@ -564,17 +561,16 @@ def LED_Harvard(speed,dwell,pressure,height):
     g.move(y=8.5)
     g.move(x=8.5)
     g.move(y=-10.)
-    g.move(x=7)
-    g.move(y=-5.8)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
+    g.move(x=3.1)
+
     g.abs_move(y=2)
     g.toggle_pressure(pressure_box)
     g.feed(10)
     g.clip(height=2, direction='+x')
+
+
     #
-    ##second wire
+    #####second wire
     g.abs_move(x=2,y=2)
     g.abs_move(z=height)
     g.feed(speed)
@@ -599,25 +595,20 @@ def LED_Harvard(speed,dwell,pressure,height):
     g.move(x=0.8,z=-1)
     g.move(x=1.25)
     g.move(y=-8.5)
-    g.move(x=1.4)
+    g.move(x=1.8)
     g.move(y=-0.6)
     g.dwell(dwell)
     g.move(y=-0.8,z=1)
     g.move(y=-0.8,z=-1)
     g.move(y=-0.6)
-    g.move(x=3)
-    g.move(y=-2)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
+    g.move(x=2)
     g.abs_move(y=2)
-    g.move(x=3)
     g.toggle_pressure(pressure_box)
     g.feed(10)
     g.clip(height=2, direction='+x')
 
 
-    ##third wire
+    ######third wire
     g.abs_move(x=2,y=2)
     g.abs_move(z=height)
     g.feed(speed)
@@ -642,19 +633,13 @@ def LED_Harvard(speed,dwell,pressure,height):
     g.move(y=-0.8,z=1)
     g.move(y=-0.8,z=-1)
     g.move(y=-0.8)
-    g.move(x=9)
-    g.move(y=-7)
-    g.dwell(dwell)
-    g.move(y=-1.3,z=1)
-    g.move(y=-1.3,z=-1)
+    g.move(x=2.1)
     g.abs_move(y=2)
-    #g.toggle_pressure(pressure_box)
-    #g.feed(10)
-    #g.clip(height=2, direction='+x')
 
-    #anode/cathode
+
+   #### #anode/cathode
     g.feed(speed*0.4)
-    g.move(x=-1.5)  
+    g.move(x=1.5)  
     g.arc(x=-2.8,y=0,radius=1.4)
     g.arc(x=2.8,y=0,radius=1.4)
     g.move(x=-0.2)
@@ -710,6 +695,9 @@ def LED_Harvard(speed,dwell,pressure,height):
     g.toggle_pressure(pressure_box)
     g.feed(10)
     g.clip(height=2, direction='+x')
+
+
+
 
 def tpu_square(speed,dwell,pressure,height):
     g.set_pressure(pressure_box, pressure)   
@@ -1801,8 +1789,10 @@ g.set_home(x=2,y=2)
 
 #LED_AFRL(speed=4.5,dwell=0.1,pressure=25,height=0.03)
 
-tpu_square(speed=12,dwell=0.2,pressure=4,height=0.02)
+#tpu_square(speed=12,dwell=0.2,pressure=4,height=0.02)
 ####FIX 1.5 OFFSET WHEN I WAS REDOING R AND L
+
+LED_Harvard(speed=3,dwell=0.1,pressure=14,height=0.04)
 
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
