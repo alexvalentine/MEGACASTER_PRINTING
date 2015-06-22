@@ -1080,8 +1080,6 @@ def LED_AFRL(speed,dwell,pressure,height):
     g.feed(speed)
     g.dwell(dwell)
     g.move(y=-35.1)
-    g.move(x=18)
-    g.move(x=-18)
     g.move(y=10.5)    
     
     g.move(x=4)
@@ -1138,13 +1136,11 @@ def LED_AFRL(speed,dwell,pressure,height):
     g.feed(speed)
     g.dwell(dwell)
     g.move(y=-35.1)
-    g.move(x=18)
     
     g.move(x=-2,y=-2)
     g.rect(x=4,y=4)
     g.move(x=2,y=2)
 
-    g.move(x=-18)
     g.move(y=10.5)
     
     g.move(x=2)
@@ -1714,6 +1710,16 @@ def LED_AFRL(speed,dwell,pressure,height):
 
 
 
+def bareduino(speed,dwell,pressure,height):
+    g.set_pressure(pressure_box, pressure)   
+    g.feed(10)
+    zero=0.0
+    g.abs_move(z=zero)
+    g.set_home(z=0)
+    g.move(z=2)
+
+
+    
 
 
 
@@ -1721,7 +1727,7 @@ def LED_AFRL(speed,dwell,pressure,height):
 
 #print_die(speed=1.4,dwell=0.1)
 #print_die_wiring(speed=0.25,dwell=0.1)
-#LED_Harvard(speed=2,dwell=0.1,pressure=36,height=0.06)
+LED_Harvard(speed=2,dwell=0.1,pressure=36,height=0.06)
 #LED_line(speed=4,dwell=1.5,pressure=15,height=0.04)
 #
 #g.set_home(x=0,y=0,z=0)
@@ -1739,13 +1745,13 @@ g.set_home(x=0,y=0)
 #g.move(x=-44.8)
 #g.move(x=11.2)
 
-LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
+#LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
 
 
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
 
-#g.view(backend='matplotlib')
+g.view(backend='matplotlib')
 
 g.teardown() 
 
