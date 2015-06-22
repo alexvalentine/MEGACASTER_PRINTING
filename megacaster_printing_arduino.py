@@ -5,9 +5,18 @@ import numpy as np
 
 
 #robomama files
-outfile = r"C:\Users\Lewis Group\Documents\GitHub\aerotech_automation\cell_printing_out.pgm"
-header = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterheader.txt"
-footer = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt"
+#outfile = r"C:\Users\Lewis Group\Documents\GitHub\aerotech_automation\cell_printing_out.pgm"
+#header = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterheader.txt"
+#footer = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt"
+
+
+#laptop locations
+outfile = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/arduino_out.pgm"
+header = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterheader.txt"
+footer = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterfooter.txt"
+
+
+
 
 #myz = 2.82357
 g=G(
@@ -30,19 +39,174 @@ well_position = ((10.5, 25.245), (24, 25.245), (37.5, 25.245), (51, 25.245),
 
 
 #### ATMEGA328
-    '''  outer pin perimeter: 9mm x 9mm
-        inner packaging perimeter: 7mm x 7mm
-        'pad target' at end of each pin is approx. 0.4mm x 0.4mm
-        pad positions are the CENTER of each of these pad targets
+#        outer pin perimeter: 9mm x 9mm
+#        inner packaging perimeter: 7mm x 7mm
+#        'pad target' at end of each pin is approx. 0.4mm x 0.4mm
+#        pad positions are the CENTER of each of these pad targets
+#
+#        set bottom left corner of outer border as 0,0, pad position 
+#
+#        pads numbered using SAME convention as pin numbering - #1 is top left pin on left side, continues counterclockwise around chip
 
-        set bottom left corner of outer border as 0,0, pad position 
-
-        pads numbered using SAME convention as pin numbering - #1 is top left pin on left side, continues counterclockwise around chip
- 
-    '''
+    
 
 
-ATMEGA328_pad_positions = ((0.2,7.3),(0.2,6.5),(0.2,5.7),(0.2,4.9),(0.2,4.1),(0.2,3.3),(0.2,2.5),(0.2,1.7),
+ATMEGA328_pad_positions = (
+
+((0.2,7.3),(0.2,6.5),(0.2,5.7),(0.2,4.9),(0.2,4.1),(0.2,3.3),(0.2,2.5),(0.2,1.7)),
+((1.7,0.2),(2.5,0.2),(3.3,0.2),(4.1,0.2),(4.9,0.2),(5.7,0.2),(6.5,0.2),(7.3,0.2)),
+((8.8,1.7),(8.8,2.5),(8.8,3.3),(8.8,4.1),(8.8,4.9),(8.8,5.7),(8.8,6.5),(8.8,7.3)),
+((7.3,8.8),(6.5,8.8),(5.7,8.8),(4.9,8.8),(4.1,8.8),(3.3,8.8),(2.5,8.8),(1.7,8.8))
+
+)
+
+
+
+
+def print_atmega328_die(speed,dwell):
+    g.set_home(x=0,y=0)
+    #g.rect(x=9,y=9)
+    g.set_pressure(pressure_box, pdms_pressure)   
+    g.feed(15)
+    #g.move(z=2)
+    for i in range(4):
+        for j in range (8):
+            g.abs_move(x = ATMEGA328_pad_positions[i][j][0], y = ATMEGA328_pad_positions[i][j][1])
+            g.move(x = 0.2, y = 0.2)
+            g.rect(x = 0.4, y = 0.4, start = 'UR')
+
+def arduino_gen1(speed,dwell,pressure):
+    g.move(z=2)
+    
+    
+    ##### RESET WIRE, PIN 29
+    
+    g.abs_move(x=13.5,y=13.5)
+    g.move(z=-2)
+    g.move(x=-3,y=-3)
+    g.move(x=-3)
+    g.move(x=-0.3,z=1)
+    g.move(x=-0.3,z=-1)
+    g.abs_move(x = ATMEGA328_pad_positions[3][4][0])
+    g.abs_move(y = ATMEGA328_pad_positions[3][4][1])
+    g.clip(height=2,direction='+y')
+    
+    ##### VCC WIRE, PIN 4
+    
+    g.abs_move(x=13.5,y=13.5)
+    g.move(z=-2)
+    g.move(x=-8,y=-8)
+    g.abs_move(y = ATMEGA328_pad_positions[0][3][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][3][0])
+    g.clip(height=2,direction='+x')
+    
+    
+    #### Rx WIRE, PIN 30
+    
+    g.abs_move(x = ATMEGA328_pad_positions[3][5][0], y=13.5)
+    g.move(z=-2)
+    g.abs_move(y = ATMEGA328_pad_positions[3][5][1])
+    g.clip(height=2,direction='+y')
+    
+    
+    #### Tx WIRE, PIN 30
+    
+    g.abs_move(x=-4,y=13.5)
+    g.move(z=-2)
+    g.move(x=3,y=-3)
+    g.abs_move(x = ATMEGA328_pad_positions[3][6][0])
+    g.abs_move(y = ATMEGA328_pad_positions[3][6][1])
+    g.clip(height=2,direction='+y')
+    
+    
+    ##### GND WIRE (LED), PIN 17
+    
+    g.abs_move(x=13.5,y=-4)
+    g.move(z=-2)
+    g.move(x=-1.5,y=1.5)
+    g.move(x=-2)
+    g.move(y=1)
+    g.move(y=0.8,z=1)
+    g.move(y=0.8,z=-1)
+    g.move(y=1)
+    g.move(y=0.3,z=1)
+    g.move(y=0.3,z=-1)
+    g.abs_move(y = ATMEGA328_pad_positions[2][0][1])
+    g.abs_move(x = ATMEGA328_pad_positions[2][0][0])
+    g.clip(height=2,direction='+x')
+    
+
+    ##### GND WIRE (cap, half of oscillator), PIN 20, 5, 7
+    
+    g.abs_move(x=13.5,y=-4)
+    g.move(z=-2)
+    g.move(x=-1.5,y=1.5)
+    g.abs_move(y = ATMEGA328_pad_positions[2][4][1])
+    g.move(x=-5)
+    g.abs_move(y = ATMEGA328_pad_positions[0][4][1])
+    g.move(x=-8.5)
+    g.move(y=-0.5,z=1)
+    g.move(y=-0.5,z=-1)
+    g.move(y=-1.2)
+    g.move(y=1.2)
+    g.abs_move(y = ATMEGA328_pad_positions[0][6][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][6][0])
+    g.clip(height=2,direction='-x')
+
+
+    ##### GND WIRE (other cap, other half of oscillator), PIN 8
+    
+    g.abs_move(x=13.5,y=-4)
+    g.move(z=-2)
+    g.move(x=-1.5,y=1.5)
+    g.abs_move(y = ATMEGA328_pad_positions[2][4][1])
+    g.move(x=-5)
+    g.move(y=-2)
+    g.move(x=-4)
+    g.abs_move(x=-1,y=-1)
+    g.move(y=0.6)
+    g.move(y=0.5,z=1)
+    g.move(y=0.5,z=-1)
+    g.move(y=1)
+    g.move(y=-0.5)
+    g.move(x=0.5)
+    g.abs_move(y = ATMEGA328_pad_positions[0][7][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][7][0])
+    g.clip(height=2,direction='-x')
+
+    ##### Tx terminal
+
+    g.abs_move(x=-4,y=13.5)
+    g.move(z=-2)
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.clip(height=2,direction='-x')
+
+    ##### Rx terminal
+
+    g.abs_move(x = ATMEGA328_pad_positions[3][5][0], y=13.5)
+    g.move(z=-2)
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.clip(height=2,direction='-x')
+
+
+    #### VCC terminal
+    
+    g.abs_move(x=13.5,y=13.5)
+    g.move(z=-2)
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.clip(height=2,direction='-x')
+    
+    
+    ##### GND WIRE (LED), PIN 17
+    
+    g.abs_move(x=13.5,y=-4)
+    g.move(z=-2)
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.clip(height=2,direction='-x')
 
 
 
@@ -1557,26 +1721,32 @@ def LED_AFRL(speed,dwell,pressure,height):
 #g.set_home(x=0,y=0,z=0)
 #print_all_single_wells(layer_height = 0.04, layer_increments=5, total_increments=20, pressure=32, speed=5, nozzle = 'Z')
 
-g.set_home(x=0,y=0)
+#g.set_home(x=0,y=0)
+#
+#g.rect(x=50.8,y=76.2)
+#g.move(x=3,y=3)
+#g.rect(x=44.8,y=70.2)
+#g.move(x=22.4)
+#g.move(y=70.2)
+#g.move(x=22.4)
+#g.move(y=-35.1)
+#g.move(x=-44.8)
+#g.move(x=11.2)
+#g.move(y=35.1)
+#g.move(x=-11.2)
+#LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
+#
 
-g.rect(x=50.8,y=76.2)
-g.move(x=3,y=3)
-g.rect(x=44.8,y=70.2)
-g.move(x=22.4)
-g.move(y=70.2)
-g.move(x=22.4)
-g.move(y=-35.1)
-g.move(x=-44.8)
-g.move(x=11.2)
-g.move(y=35.1)
-g.move(x=-11.2)
-LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
+print_atmega328_die(speed=10,dwell=0.2)
+arduino_gen1(speed=10,dwell=0.2,pressure=5)
+g.abs_move(x=-5.5,y=-5.5)
+g.rect(x=20,y=20)
 
 
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
 
-#g.view(backend='matplotlib')
+g.view(backend='matplotlib')
 
 g.teardown() 
 
