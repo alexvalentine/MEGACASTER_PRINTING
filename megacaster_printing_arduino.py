@@ -4,16 +4,16 @@ import numpy as np
 #outfile = r"/Volumes/group0/jlewis/User Files/Valentine/AFRL/my_print.pgm"
 
 
-#robomama files
-#outfile = r"C:\Users\Lewis Group\Documents\GitHub\aerotech_automation\cell_printing_out.pgm"
-#header = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterheader.txt"
-#footer = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt"
+#########robomama files
+outfile = r"C:\Users\Lewis Group\Documents\GitHub\aerotech_automation\cell_printing_out.pgm"
+header = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterheader.txt"
+footer = r"C:\Users\Lewis Group\Documents\GitHub\MEGACASTER_PRINTING\mymegacasterfooter.txt"
 
 
-#laptop locations
-outfile = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/arduino_out.pgm"
-header = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterheader.txt"
-footer = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterfooter.txt"
+##laptop locations
+#outfile = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/arduino_out.pgm"
+#header = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterheader.txt"
+#footer = r"/Users/alex/alexvalentine/MEGACASTER_PRINTING/mymegacasterfooter.txt"
 
 
 
@@ -1737,7 +1737,7 @@ def LED_AFRL(speed,dwell,pressure,height):
 #LED_AFRL(speed=2,dwell=0.1,pressure=36,height=0.06)
 #
 
-print_atmega328_die(speed=10,dwell=0.2)
+#print_atmega328_die(speed=10,dwell=0.2)
 arduino_gen1(speed=10,dwell=0.2,pressure=5)
 g.abs_move(x=-5.5,y=-5.5)
 g.rect(x=20,y=20)
