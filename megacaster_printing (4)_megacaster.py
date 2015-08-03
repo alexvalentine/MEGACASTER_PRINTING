@@ -1760,8 +1760,89 @@ def LED_AFRL(speed,dwell,pressure,height):
 
 
 
+def tpu_bottom(nozzle,height,speed,dwell,pressure):
+    g.feed(25)
+    g.set_pressure(pressure_box, pressure)
+    
+########test line
+    g.abs_move(x=1,y=1)
+    g.abs_move(**{nozzle:height})
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.feed(speed)
+    g.move(y=20)
+    g.move(x=0.2)
+    g.move(y=-20)
+    g.move(x=0.2)
+    g.move(y=20)
+    g.toggle_pressure(pressure_box)
+    g.feed(20)
+    g.clip(axis=nozzle, height=2, direction='+x')
+    
+########printing slide 1
+
+    g.abs_move(4, 2+.5)    
+    g.abs_move(**{nozzle:height}) 
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
+    
+    g.abs_move(35, 2+.5)    
+    g.abs_move(**{nozzle:height}) 
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
+
+########printing slide 2
+    g.abs_move(x=4+152.8, y=2-0.22+.5)    
+    g.abs_move(**{nozzle:height-0.0235})
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
+    
+    g.move(x=6,y=-45+.5)    
+    g.abs_move(**{nozzle:height-0.0235}) 
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
 
 
+########printing slide 3
+    g.abs_move(x=4+282.93, y=2-6.37+.5)    
+    g.abs_move(**{nozzle:height-0.033}) 
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
+    
+    g.move(x=6, y=-45+.5)    
+    g.abs_move(**{nozzle:height-0.033}) 
+    g.feed(speed)
+    g.toggle_pressure(pressure_box)
+    g.dwell(dwell)
+    g.meander(x=25,y=45,spacing=0.25,start='LL',orientation='y')
+    g.toggle_pressure(pressure_box)
+    g.feed(10)
+    g.clip(axis=nozzle, height=3, direction='-y')
 
 
 
@@ -1775,7 +1856,7 @@ def LED_AFRL(speed,dwell,pressure,height):
 #g.set_home(x=0,y=0,z=0)
 #print_all_single_wells(layer_height = 0.04, layer_increments=5, total_increments=20, pressure=32, speed=5, nozzle = 'Z')
 
-g.set_home(x=2,y=2)
+#g.set_home(x=2,y=2)
 
 #g.rect(x=50.8,y=76.2)
 #g.move(x=3,y=3)
@@ -1792,10 +1873,16 @@ g.set_home(x=2,y=2)
 #tpu_square(speed=12,dwell=0.2,pressure=4,height=0.02)
 ####FIX 1.5 OFFSET WHEN I WAS REDOING R AND L
 
-LED_Harvard(speed=3,dwell=0.1,pressure=14,height=0.04)
+#LED_Harvard(speed=3,dwell=0.1,pressure=14,height=0.04)
 
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
+
+
+
+tpu_bottom(nozzle='z',height=0,speed=20,dwell=0.2,pressure=50)
+
+
 
 g.view(backend='matplotlib')
 
