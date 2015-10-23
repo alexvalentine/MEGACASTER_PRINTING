@@ -1849,6 +1849,133 @@ def tpu_bottom(nozzle,height,speed,dwell,pressure):
 
 
 
+def AgTPU_strain_speciman(nozzle,height,speed,dwell,pressure):
+    g.feed(25)
+    g.set_pressure(pressure_box, pressure)
+    
+    #
+    ######test line
+    g.abs_move(x=2,y=1.)
+    g.abs_move(**{nozzle:height})
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)    
+    g.move(x=10)
+    g.toggle_pressure(pressure_box)
+    g.feed(20)
+    g.clip(axis=nozzle, height=3, direction='-y')
+    
+    my_xstarts = [3.0, 11.825, 20.65, 29.474999999999998, 38.3, 47.125, 55.949999999999996, 64.77499999999999]
+##
+##    ############BOTTOM LAYER
+##            
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1,y=3+2)
+          g.abs_move(**{nozzle:height})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+
+          g.meander(x=5,y=7,spacing=0.32,orientation='y')
+          g.move(x=-2.5)
+          g.move(y=1.5)
+          g.move(x=-0.8,y=-1.3)
+          g.move(x=1.6)
+          g.move(x=-0.8,y=1.3)
+          g.move(y=-1.5)
+          
+          g.move(y=25)
+          
+          g.move(y=1.5)
+          g.move(y=-3)
+          g.move(x=-0.8,y=1.3)
+          g.move(x=1.6)
+          g.move(x=-0.8,y=-1.3)
+          g.move(y=1.5)
+          g.move(x=-2.5)
+          g.meander(x=5,y=7,spacing=0.32,orientation='y')
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+          
+    ############2nd LAYER     
+#    #g.dwell(20)            
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1+2.5,y=3+2+7)
+          g.abs_move(**{nozzle:height+.05})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+
+          g.move(y=25)  
+
+
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+    
+    
+#    ############3rd LAYER
+    #g.dwell(20)
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1+2.5,y=3+2+7)
+          g.abs_move(**{nozzle:height+.1})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+
+          g.move(y=25)
+
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+###          
+##          
+#    ############4th LAYER
+    #g.dwell(20)
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1+2.5,y=3+2+7)
+          g.abs_move(**{nozzle:height+.15})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+
+          g.move(y=25)
+
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+          
+    ############5th LAYER
+    #g.dwell(20)
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1+2.5,y=3+2+7)
+          g.abs_move(**{nozzle:height+.2})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+
+          g.move(y=25)
+
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+
+    ############6th LAYER
+    #g.dwell(20)
+    for i in [0,1,2,3,4,5,6,7]:
+          g.abs_move(x=my_xstarts[i]+1+2.5,y=3+2+7)
+          g.abs_move(**{nozzle:height+.25})
+          g.toggle_pressure(pressure_box)
+          g.feed(speed)
+          g.dwell(dwell)
+          g.move(y=25)
+
+          g.toggle_pressure(pressure_box)
+          g.feed(20)
+          g.clip(axis=nozzle, height=3, direction='-y')
+
+
 #print_die(speed=1.4,dwell=0.1)
 #print_die_wiring(speed=0.25,dwell=0.1)
 #LED_Harvard(speed=2,dwell=0.1,pressure=36,height=0.06)
@@ -1881,8 +2008,9 @@ def tpu_bottom(nozzle,height,speed,dwell,pressure):
 
 
 
-tpu_bottom(nozzle='z',height=0,speed=20,dwell=0.2,pressure=50)
+#tpu_bottom(nozzle='z',height=0,speed=20,dwell=0.2,pressure=50)
 
+AgTPU_strain_speciman(nozzle='z',height=0.1,speed=4,dwell=0.1,pressure=10)
 
 
 g.view(backend='matplotlib')
