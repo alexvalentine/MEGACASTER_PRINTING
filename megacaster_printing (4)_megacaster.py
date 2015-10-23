@@ -5,9 +5,9 @@ import numpy as np
 #myz = 2.82357
 g=G(
     direct_write=False,
-    outfile=r'C:\Users\Aerosol Jet\Documents\myprint.pgm',
-    header=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterheader.txt',
-    footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterfooter.txt',
+    #outfile=r'C:\Users\Aerosol Jet\Documents\myprint.pgm',
+    #header=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterheader.txt',
+    #footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterfooter.txt',
     print_lines=False,
     aerotech_include=False,
 ) 
@@ -22,6 +22,7 @@ well_position = ((10.5, 25.245), (24, 25.245), (37.5, 25.245), (51, 25.245),
 
 
 pressure_box = 16
+
 pdms_pressure = 13
 
 def print_die(speed,dwell):
@@ -1888,5 +1889,7 @@ g.view(backend='matplotlib')
 
 g.teardown() 
 
+
+    
 
 

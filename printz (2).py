@@ -44,6 +44,17 @@ pad_positions=((0.1,0.38+0.28*0),(.1,0.38+0.28*1),(.1,0.38+0.28*2),(.1,0.38+0.28
 #24 pads, 6 on each side
 
 
+ATMEGA328_pad_positions = (
+
+((0.2,7.3),(0.2,6.5),(0.2,5.7),(0.2,4.9),(0.2,4.1),(0.2,3.3),(0.2,2.5),(0.2,1.7)),
+((1.7,0.2),(2.5,0.2),(3.3,0.2),(4.1,0.2),(4.9,0.2),(5.7,0.2),(6.5,0.2),(7.3,0.2)),
+((8.8,1.7),(8.8,2.5),(8.8,3.3),(8.8,4.1),(8.8,4.9),(8.8,5.7),(8.8,6.5),(8.8,7.3)),
+((7.3,8.8),(6.5,8.8),(5.7,8.8),(4.9,8.8),(4.1,8.8),(3.3,8.8),(2.5,8.8),(1.7,8.8))
+
+)
+
+
+
 def first_print():
 
     #11 layers - 1 base + 10 notched
@@ -537,9 +548,239 @@ def print_die_wiring():
 #MGH_print()
 #g.toggle_pressure(pressure_box)
 
-print_die()
-print_die_wiring()
-#g.view()
+def arduino_gen1(valve,nozzle,height,speed,dwell,pressure,testline,startx,starty):
+    g.feed(25)
+    g.set_pressure(pressure_box, pressure)
+   
+    #if testline == 'y':
+    #    #########test line
+    #    g.abs_move(x=2,y=3.5)
+    #    #pressure_purge(delay = 2)
+    #    g.abs_move(**{nozzle:height})
+    #    if valve is not None:
+    #        g.set_valve(num = valve, value = 1)
+    #    g.dwell(dwell)
+    #    g.feed(speed)
+    #    g.move(x=15)
+    #    g.feed(20)
+    #    g.clip(axis=nozzle, height=2, direction='-x')
+    #    #########test line
+    
+
+    g.write("POSOFFSET CLEAR X Y")    
+    g.abs_move(x=startx,y=starty) ####bottom left corner of TPU square
+    g.set_home(x=-6.5,y=-6.5)
+    
+        
+    
+    ###### RESET WIRE, PIN 29
+    
+    g.abs_move(x=13.5,y=13.5)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)
+    g.move(x=-3,y=-3)
+    g.move(x=-3)
+    g.move(x=-0.3,**{nozzle:1})
+    g.move(x=-0.3,**{nozzle:-1})
+    g.abs_move(x = ATMEGA328_pad_positions[3][4][0])
+    g.abs_move(y = ATMEGA328_pad_positions[3][4][1])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='+y')
+
+    ###### VCC WIRE, PIN 4
+    #
+    g.abs_move(x=13.5,y=13.5)
+    g.abs_move(**{nozzle:height+0.04})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)
+    g.move(x=-3,y=-3)
+    g.move(x=-1,y=-1,**{nozzle:-0.04})    
+    g.move(x=-4,y=-4)
+    g.abs_move(y = ATMEGA328_pad_positions[0][3][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][3][0])
+    g.move(x=-2)
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='+x')
+    #
+    ##### Rx WIRE, PIN 30
+    #
+    g.abs_move(x = ATMEGA328_pad_positions[3][5][0], y=13.5)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.abs_move(y = ATMEGA328_pad_positions[3][5][1])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='+y')
+    
+    
+    #### Tx WIRE, PIN 30
+    
+    g.abs_move(x=-4,y=13.5)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=3,y=-3)
+    g.abs_move(x = ATMEGA328_pad_positions[3][6][0])
+    g.abs_move(y = ATMEGA328_pad_positions[3][6][1])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='+y')
+    
+    
+    ##### GND WIRE (LED), PIN 17
+    
+    g.abs_move(x=13.5,y=-4)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-1.5,y=1.5)
+    g.move(x=-2)
+    g.move(y=1)
+    g.move(y=0.8,**{nozzle:1})
+    g.move(y=0.8,**{nozzle:-1})
+    g.move(y=1)
+    g.move(y=0.3,**{nozzle:1})
+    g.move(y=0.3,**{nozzle:-1})
+    g.abs_move(y = ATMEGA328_pad_positions[2][0][1])
+    g.abs_move(x = ATMEGA328_pad_positions[2][0][0])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='+x')
+    
+
+    ##### GND WIRE (cap, half of oscillator), PIN 20, 5, 7
+    
+    g.abs_move(x=13.5,y=-4)
+    g.abs_move(**{nozzle:height+0.04})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-1.5,y=1.5)
+    g.move(1,**{nozzle:-0.04})
+    g.abs_move(y = ATMEGA328_pad_positions[2][4][1])
+    g.move(x=-5)
+    g.abs_move(y = ATMEGA328_pad_positions[0][4][1])
+    g.move(x=-10)
+    g.move(x=-0.8,**{nozzle:1})
+    g.move(x=-0.8,**{nozzle:-1})
+    g.move(x=-1)
+    g.move(y=-0.8)
+    g.move(x=2.5)
+    g.abs_move(y = ATMEGA328_pad_positions[0][6][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][6][0])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+
+
+    ##### GND WIRE (other cap, other half of oscillator), PIN 8
+    
+    g.abs_move(x=13.5,y=-4)
+    g.abs_move(**{nozzle:height+0.08})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-1.5,y=1.5)
+    g.move(1,**{nozzle:-0.04})
+    g.abs_move(y = ATMEGA328_pad_positions[2][4][1])
+    g.move(x=-5)
+    g.move(y=-2,**{nozzle:-0.04})
+    g.move(x=-4)
+    g.abs_move(x=-1,y=-1)
+    g.move(x=-1)
+    g.move(x=-0.8,**{nozzle:1})
+    g.move(x=-0.8,**{nozzle:-1})
+    g.move(x=-1)
+    g.move(y=2.6)
+    g.move(y=-0.8)
+    g.move(x=4)
+    g.abs_move(y = ATMEGA328_pad_positions[0][7][1])
+    g.abs_move(x = ATMEGA328_pad_positions[0][7][0])
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+
+    ##### Tx terminal
+
+    g.abs_move(x=-4,y=13.5)
+    g.abs_move(**{nozzle:height+0.09})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+
+
+    ##### Rx terminal
+
+    g.abs_move(x = ATMEGA328_pad_positions[3][5][0], y=13.5)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+
+
+
+    #### VCC terminal
+    
+    g.abs_move(x=13.5,y=13.5)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+    
+    
+    ##### GND WIRE (LED), PIN 17
+    
+    g.abs_move(x=13.5,y=-4)
+    g.abs_move(**{nozzle:height})
+    g.feed(speed)
+    if valve is not None:
+        g.set_valve(num = valve, value = 1)
+    g.dwell(dwell)  
+    g.move(x=-0.75,y=-0.75)
+    g.rect(x=1.5,y=1.5)
+    g.set_valve(num = valve, value = 0)
+    g.feed(15)
+    g.clip(axis=nozzle, height=2,direction='-x')
+
+
+
+arduino_gen1(valve='1',nozzle='z',height=0.05,speed=4,dwell=0.1,pressure=23,startx=420.766728,starty=108.626399,testline='y')
+
+
 
 g.view(backend='matplotlib')
 
