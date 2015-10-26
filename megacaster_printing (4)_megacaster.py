@@ -5,12 +5,20 @@ import numpy as np
 #myz = 2.82357
 g=G(
     direct_write=False,
+<<<<<<< Updated upstream
     outfile=r'C:\Users\Aerosol Jet\Documents\myprint.pgm',
     header=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterheader (2).txt',
     footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterfooter (2).txt',
+=======
+    #outfile=r'C:\Users\Aerosol Jet\Documents\myprint.pgm',
+    outfile=None,
+    #header=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterheader.txt',
+    #footer=r'C:\Users\Aerosol Jet\Documents\GitHub\MEGACASTER_PRINTING-master\mymegacasterfooter.txt',
+>>>>>>> Stashed changes
     print_lines=False,
     aerotech_include=False,
 ) 
+
 
 pad_positions=((0.1,0.38+0.29*0),(.1,0.38+0.29*1),(.1,0.38+0.29*2),(.1,0.38+0.29*3),(.1,0.38+0.29*4),(.1,0.38+0.29*5),
 (0.38+0.29*0,2.06),(0.38+0.29*1,2.06),(0.38+0.29*2,2.06),(0.38+0.29*3,2.06),(0.38+0.29*4,2.06),(0.38+0.29*5,2.06),
@@ -743,179 +751,179 @@ def LED_AFRL(speed,dwell,pressure,height):
     
     
     
-#    #########################    A    #########################    
-#
-    #FIRST WIRE
+    #########################    A    #########################    
 
-#    g.abs_move(x=3,y=38.1)
-#    g.dwell(10)
-#    g.abs_move(z=height+0.06)
-#    g.toggle_pressure(pressure_box)
-#    g.feed(speed)
-#    g.dwell(dwell)
+    ####FIRST WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.dwell(10)
+    g.abs_move(z=height+0.06)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+
+    g.move(x=1,y=1,z=-0.06)
+    g.move(x=0.592,y=2.39)  #2.5
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=1.2,y=4.87)  #5.1
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=1.2,y=4.87)  #5.1
+
+    g.move(x=0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=0.472,y=1.91)  #2.0
+    g.move(x=1)
+    g.move(y=-2.6)
+    g.move(x=1.5)
+
+    g.move(x=0.8,z=1)
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.8,z=-1)
+
+    g.move(x=1.5)
+    g.toggle_pressure(pressure_box)
+    g.clip(height=4,direction='-x')
+    g.feed(10)
 #
-#
-#    g.move(x=1,y=1,z=-0.06)
-#    g.move(x=0.592,y=2.39)  #2.5
-#
-#    g.move(x=0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=1.2,y=4.87)  #5.1
-#
-#    g.move(x=0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=1.2,y=4.87)  #5.1
-#
-#    g.move(x=0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=0.472,y=1.91)  #2.0
-#    g.move(x=1)
-#    g.move(y=-2.6)
-#    g.move(x=1.5)
-#
-#    g.move(x=0.8,z=1)
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.8,z=-1)
-#
-#    g.move(x=1.5)
-#    g.toggle_pressure(pressure_box)
-#    g.clip(height=4,direction='-x')
-#    g.feed(10)
-#
-#    #SECOND WIRE
-#
-#    g.abs_move(x=3,y=38.1)
-#    g.dwell(5)
-#    g.abs_move(z=height+0.06)
-#    g.toggle_pressure(pressure_box)
-#    g.feed(speed)
-#    g.dwell(dwell)
-#
-#
-#
-#    g.move(x=2,z=-0.06)
-#    g.move(x=19.4)
-#    g.move(y=1)
-#
-#    g.move(x=-0.592,y=2.39)  #2.5
-#
-#    g.move(x=-0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=-0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=-1.2,y=4.87)  #5.1
-#
-#    g.move(x=-0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=-0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=-1.2,y=4.87)  #5.1
-#
-#    g.move(x=-0.192,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=-0.192,y=0.76,z=-1) #0.8
-#
-#    g.move(x=-0.472,y=1.91)  #2.0
-#    g.move(x=-1)
-#    g.move(y=-2.6)
-#    g.move(x=-1.5)
-#
-#    g.move(x=-0.8,z=1)
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=-0.8,z=-1)
-#
-#    g.move(x=-1.5)
-#    
-#    g.move(y=1.5)
-#    g.move(x=3.5)
-#    g.move(y=2.85)
-#    g.move(x=1.8)
-#    g.toggle_pressure(pressure_box)
-#    g.clip(height=4,direction='-x')
-#    g.feed(10)
-#
-#    #THIRD WIRE
-#
-#    g.abs_move(x=3,y=38.1)
-#    g.dwell(5)
-#    g.abs_move(z=height+0.06)
-#    g.toggle_pressure(pressure_box)
-#    g.feed(speed)
-#    g.dwell(dwell)
-#
-#    g.move(y=2.02,z=-0.06)
-#    g.move(x=4.42,y=17.88)   #20.5
-#    g.move(x=0.36,y=1.46)     #1.5
-#    g.move(x=1.2)
-#    g.move(x=0.38,y=1.55)     #1.6
-#
-#
-#    g.move(x=0.24,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.24,y=0.76,z=-1) #0.8
-#    
-#
-#    g.move(x=1.08,y=4.37)    #4.5
-#
-#
-#    g.move(x=0.24,y=0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.24,y=0.76,z=-1) #0.8
-#    
-#    g.arc(x=2.79,y=3.1,radius=3.9,direction='CW')
-#    g.arc(x=2.79,y=-3.1,radius=3.9,direction='CW')
-#
-#    g.move(x=0.24,y=-0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.24,y=-0.76,z=-1) #0.8
-#
-#    g.move(x=1.08,y=-4.37)    #4.5
-#    
-#    
-#    g.move(x=0.24,y=-0.76,z=1) #0.8
-#    #g.move(x=-0.5,y=-0.5)
-#    #g.rect(x=1,y=1)
-#    #g.move(x=0.5,y=0.5)
-#    g.move(x=0.24,y=-0.76,z=-1) #0.8
-#
-#    g.move(x=0.38,y=-1.55)     #1.6
-#
-#    g.move(x=6)
-#    g.move(y=13.74)
-#    g.move(x=22.4)
-#    g.move(y=-70.2)
-#    g.move(x=-18)
-#    g.toggle_pressure(pressure_box)
-#    g.clip(height=4,direction='+x')
-#    g.feed(10)
+    #SECOND WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.dwell(5)
+    g.abs_move(z=height+0.06)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+
+
+    g.move(x=2,z=-0.06)
+    g.move(x=19.4)
+    g.move(y=1)
+
+    g.move(x=-0.592,y=2.39)  #2.5
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-1.2,y=4.87)  #5.1
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-1.2,y=4.87)  #5.1
+
+    g.move(x=-0.192,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=-0.192,y=0.76,z=-1) #0.8
+
+    g.move(x=-0.472,y=1.91)  #2.0
+    g.move(x=-1)
+    g.move(y=-2.6)
+    g.move(x=-1.5)
+
+    g.move(x=-0.8,z=1)
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=-0.8,z=-1)
+
+    g.move(x=-1.5)
+    
+    g.move(y=1.5)
+    g.move(x=3.5)
+    g.move(y=2.85)
+    g.move(x=1.8)
+    g.toggle_pressure(pressure_box)
+    g.clip(height=4,direction='-x')
+    g.feed(10)
+
+    #THIRD WIRE
+
+    g.abs_move(x=3,y=38.1)
+    g.dwell(5)
+    g.abs_move(z=height+0.06)
+    g.toggle_pressure(pressure_box)
+    g.feed(speed)
+    g.dwell(dwell)
+
+    g.move(y=2.02,z=-0.06)
+    g.move(x=4.42,y=17.88)   #20.5
+    g.move(x=0.36,y=1.46)     #1.5
+    g.move(x=1.2)
+    g.move(x=0.38,y=1.55)     #1.6
+
+
+    g.move(x=0.24,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=0.76,z=-1) #0.8
+    
+
+    g.move(x=1.08,y=4.37)    #4.5
+
+
+    g.move(x=0.24,y=0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=0.76,z=-1) #0.8
+    
+    g.arc(x=2.79,y=3.1,radius=3.9,direction='CW')
+    g.arc(x=2.79,y=-3.1,radius=3.9,direction='CW')
+
+    g.move(x=0.24,y=-0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=-0.76,z=-1) #0.8
+
+    g.move(x=1.08,y=-4.37)    #4.5
+    
+    
+    g.move(x=0.24,y=-0.76,z=1) #0.8
+    #g.move(x=-0.5,y=-0.5)
+    #g.rect(x=1,y=1)
+    #g.move(x=0.5,y=0.5)
+    g.move(x=0.24,y=-0.76,z=-1) #0.8
+
+    g.move(x=0.38,y=-1.55)     #1.6
+
+    g.move(x=6)
+    g.move(y=13.74)
+    g.move(x=22.4)
+    g.move(y=-70.2)
+    g.move(x=-18)
+    g.toggle_pressure(pressure_box)
+    g.clip(height=4,direction='+x')
+    g.feed(10)
 #
 #
 #    #########################    F    #########################    
@@ -1283,59 +1291,59 @@ def LED_AFRL(speed,dwell,pressure,height):
 #    g.feed(10)
 
 ##########################    L    #########################    
+##
+#    #FIRST WIRE
 #
-    #FIRST WIRE
-
-    g.abs_move(x=3,y=38.1-1.5)
-    g.dwell(5)
-    g.abs_move(z=height+0.19)
-    g.toggle_pressure(pressure_box)
-    g.feed(speed)
-    g.dwell(dwell)
-    
-    g.move(x=2,y=1.5,z=-0.19)
-    g.move(x=23.38)
-    g.move(y=-2)   
-
-    g.move(y=-0.8,z=1) #0.8
-    #g.move(x=-0.5,y=-0.5)
-    #g.rect(x=1,y=1)
-    #g.move(x=0.5,y=0.5)
-    g.move(y=-0.8,z=-1) #0.8
-
-    g.move(y=-2.8)
-    
-    g.move(y=-0.8,z=1) #0.8
-    #g.move(x=-0.5,y=-0.5)
-    #g.rect(x=1,y=1)
-    #g.move(x=0.5,y=0.5)
-    g.move(y=-0.8,z=-1) #0.8
-
-
-    g.move(y=-2.8)
-
-    g.move(y=-0.8,z=1) #0.8
-    #g.move(x=-0.5,y=-0.5)
-    #g.rect(x=1,y=1)
-    #g.move(x=0.5,y=0.5)
-    g.move(y=-0.8,z=-1) #0.8
-
-    g.move(y=-2.8)
-
-    g.move(y=-0.8,z=1) #0.8
-    #g.move(x=-0.5,y=-0.5)
-    #g.rect(x=1,y=1)
-    #g.move(x=0.5,y=0.5)
-    g.move(y=-0.8,z=-1) #0.8
-
-    g.move(y=-1.)
-    g.move(x=-1)
-    g.move(y=-13.6)
-    #g.move(x=5.5)
-
-    g.toggle_pressure(pressure_box)
-    g.clip(height=4,direction='+x')
-    g.feed(10)
+#    g.abs_move(x=3,y=38.1-1.5)
+#    g.dwell(5)
+#    g.abs_move(z=height+0.19)
+#    g.toggle_pressure(pressure_box)
+#    g.feed(speed)
+#    g.dwell(dwell)
+#    
+#    g.move(x=2,y=1.5,z=-0.19)
+#    g.move(x=23.38)
+#    g.move(y=-2)   
+#
+#    g.move(y=-0.8,z=1) #0.8
+#    #g.move(x=-0.5,y=-0.5)
+#    #g.rect(x=1,y=1)
+#    #g.move(x=0.5,y=0.5)
+#    g.move(y=-0.8,z=-1) #0.8
+#
+#    g.move(y=-2.8)
+#    
+#    g.move(y=-0.8,z=1) #0.8
+#    #g.move(x=-0.5,y=-0.5)
+#    #g.rect(x=1,y=1)
+#    #g.move(x=0.5,y=0.5)
+#    g.move(y=-0.8,z=-1) #0.8
+#
+#
+#    g.move(y=-2.8)
+#
+#    g.move(y=-0.8,z=1) #0.8
+#    #g.move(x=-0.5,y=-0.5)
+#    #g.rect(x=1,y=1)
+#    #g.move(x=0.5,y=0.5)
+#    g.move(y=-0.8,z=-1) #0.8
+#
+#    g.move(y=-2.8)
+#
+#    g.move(y=-0.8,z=1) #0.8
+#    #g.move(x=-0.5,y=-0.5)
+#    #g.rect(x=1,y=1)
+#    #g.move(x=0.5,y=0.5)
+#    g.move(y=-0.8,z=-1) #0.8
+#
+#    g.move(y=-1.)
+#    g.move(x=-1)
+#    g.move(y=-13.6)
+#    #g.move(x=5.5)
+#
+#    g.toggle_pressure(pressure_box)
+#    g.clip(height=4,direction='+x')
+#    g.feed(10)
 
     #SECOND WIRE
 
@@ -2006,6 +2014,7 @@ def AgTPU_strain_speciman(nozzle,height,speed,dwell,pressure):
 
 #print_die_wiring_DIE_CONNECTIONS(nozzle='z',height=0.04,speed=1.8,dwell=0.02,pressure=8)
 
+<<<<<<< Updated upstream
 
 
 #tpu_bottom(nozzle='z',height=0,speed=20,dwell=0.2,pressure=50)
@@ -2014,6 +2023,9 @@ AgTPU_strain_speciman(nozzle='z',height=0.088,speed=4,dwell=0.1,pressure=20)
 
 
 g.view(backend='matplotlib')
+=======
+g.view()
+>>>>>>> Stashed changes
 
 g.teardown() 
 
